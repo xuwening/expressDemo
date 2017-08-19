@@ -47,5 +47,19 @@ var server = app.listen(3000, function() {
 
 //中间件
 //应用级中间件：app.use()、app.get()
+
 //没有挂载路径，每个路径都会执行
 app.use((req, res, next) => res.send('process each path'))
+app.use('/user/:id', (req, res, next) => res.send('process...'))
+
+//路由中间件：和应用级中间件一样
+var router = express.Router()
+router.use((req, res, next) =>res.send('process each path'))
+router.use('/user/:id', (req, res, next) => res.send('process...'))
+app.use('/', router)  //将路由中间件挂载到app
+
+//错误处理中间件
+app.use((err, req, res, next) => res.status(500).send('something broke.'))
+
+//静态资源托管中间件
+// app.use(express.static('public', options))
