@@ -1,7 +1,16 @@
 'use strict'
 
 import express from 'express'
+import compression from 'compression'
+import article from './app/article'
+
 let app = express()
+
+//response添加gzip压缩
+app.use(compression())
+
+//多路由控制
+app.use('/article', article)
 
 //静态资源访问
 app.use('/static', express.static('public'))
@@ -18,8 +27,8 @@ app.get('/download', (req, res) => res.download('./public/111.zip'))
 
 //http header
 app.get('message', (req, res) => {
-    res.set('Content-Type', 'application/json')
-    res.set({
+    res.setHeader('Content-Type', 'application/json')
+    res.setHeader({
         'Content-Length': 'Hello world.'.length,
         'Etag': '123123'
     })
