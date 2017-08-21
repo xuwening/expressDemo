@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>hello world.</h1>
+        <script type='text/javascript'>
+            if (typeof(Worker) !== "undefined") {
+                // 是的！支持 Web worker！
+                document.write('<h3>yes! support web worker</h3>')
+                
+            } else {
+                // 抱歉！不支持 Web Worker！
+                document.write('<h3>du not support web worker</h3>')
+            }        
+        </script>
+    </body>
+</html>
