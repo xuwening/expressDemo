@@ -34,6 +34,34 @@ app.get('message', (req, res) => {
     })
 })
 
+app.all('/biz-orange/RN/patchVersion', (req, res) => {
+
+    let resBody = {
+
+        resBody: {
+
+            patchs:[   
+                { 
+                    "zipPath": "http://192.168.6.30:3000/static/LDBusinessEntry.zip", 
+                    "version": "1.0.3", 
+                    "moduleName": "LDBusinessEntry",
+                    "zipHash": "569ba6a44b85a333f675712fc7be57b2",
+                    "jsbundleHash": "46df2e326f0c61ed490d938bfff0e118",
+                },
+                { 
+                    "zipPath": "http://192.168.6.30:3000/static/LDCommon.zip", 
+                    "version": "1.0.1", 
+                    "moduleName": "LDCommon",
+                    "zipHash": "569ba6a44b85a333f675712fc7be57b2",
+                    "jsbundleHash": "46df2e326f0c61ed490d938bfff0e118",
+                },
+            ]
+        }
+    }
+
+    res.json(resBody)
+})
+
 app.all('/*', (req, res) => {
     res.status(404).send('not found page.')
     // res.send('not found page.')
