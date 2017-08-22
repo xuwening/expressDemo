@@ -3,6 +3,8 @@
 import express from 'express'
 import compression from 'compression'
 import article from './app/article'
+import upload from './public/uploadfile/upload'
+import uploadAction from './public/uploadfile/uploadAction'
 
 let app = express()
 
@@ -11,6 +13,8 @@ app.use(compression())
 
 //多路由控制
 app.use('/article', article)
+app.use('/upload', upload)
+app.use('/uploadAction', uploadAction)
 
 //静态资源访问
 app.use('/static', express.static('public'))
@@ -82,6 +86,7 @@ var server = app.listen(3000, function() {
     console.log('start server %s, port %s', host, port)
 })
 
+/*
 //中间件
 //应用级中间件：app.use()、app.get()
 
@@ -100,3 +105,4 @@ app.use((err, req, res, next) => res.status(500).send('something broke.'))
 
 //静态资源托管中间件
 // app.use(express.static('public', options))
+*/
