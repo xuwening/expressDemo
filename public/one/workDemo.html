@@ -8,6 +8,7 @@
     </p>
     <button onclick="startWorker()">开始 Worker</button>
     <button onclick="stopWorker()">停止 Worker</button>
+    <button onclick="sendMessage()">发消息</button>
     <br /><br />
 
     <script>
@@ -28,6 +29,10 @@
 
         function stopWorker() {
             worker.terminate();
+        }
+
+        function sendMessage() {
+            worker.postMessage('hahaha ');
         }
     </script>
 
