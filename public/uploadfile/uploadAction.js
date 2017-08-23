@@ -17,7 +17,7 @@ let storage = multer.diskStorage({
 })
 let upload = multer({storage: storage})
 
-router.post('/', upload.single('avatar'), (req, res, next) => {
+router.post('/', upload.array('avatar'), (req, res, next) => {
     console.log('3--------------')
     res.send('文件上传成功')
 })
